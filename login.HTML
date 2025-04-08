@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="he"> <!-- קובע שהדף יהיה בשפה עברית -->
+<head>
+    <meta charset="UTF-8"> <!-- קובע את הקידוד של הדף כך שיתמוך בתווים עבריים -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- קובע שהדף יגיב בצורה טובה במובייל -->
+    <title>התחברות למערכת</title> <!-- כותרת הדף שתופיעה בכרטיסיית הדפדפן -->
+    <link rel="stylesheet" href="./style.css"> <!-- חיבור לקובץ CSS כדי לעצב את הדף -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script> <!-- חיבור לסקריפט של Firebase (מודול האפליקציה) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script> <!-- חיבור לסקריפט של Firebase (מודול האותנטיקציה) -->
+</head>
+<body>
+    <div class="form-container"> <!-- אלמנט שמכיל את כל התוכן של הטופס -->
+        <h1>ברוך הבא למערכת ההשקיה</h1> <!-- כותרת ראשית של הדף -->
+        <h3>התחבר למערכת החכמה לניהול השקיה</h3> <!-- כותרת משנית -->
+        <p>אנא הזן את פרטי ההתחברות שלך.</p> <!-- הנחיות למשתמש על מה עליו למלא בטופס -->
+
+        <form id="loginForm"> <!-- יצירת טופס התחברות, עם מזהה כדי לגשת אליו בקוד -->
+            <label for="loginEmail">אימייל:</label> <!-- תווית לשדה אימייל -->
+            <input type="email" id="loginEmail" name="loginEmail" required placeholder="הזן אימייל תקני"> <!-- שדה קלט לאימייל, נדרש להזין ערך תקני -->
+
+            <label for="loginPassword">סיסמה:</label> <!-- תווית לשדה סיסמה -->
+            <input type="password" id="loginPassword" name="loginPassword" required minlength="6" placeholder="הזן סיסמה (מינימום 6 תווים)"> <!-- שדה קלט לסיסמה עם אורך מינימלי של 6 תווים -->
+
+            <label for="loginAge">גיל:</label> <!-- תווית לשדה גיל -->
+            <input type="number" id="loginAge" name="loginAge" required min="16" placeholder="הזן גיל מעל 16"> <!-- שדה קלט עבור גיל, חייב להיות מעל 16 -->
+
+            <label>מגדר:</label> <!-- תווית עבור שדה המגדר -->
+            <div class="radio-group"> <!-- קבוצה של רדיו בוטנים (בחירה אחת מתוך כמה אפשרויות) -->
+                <input type="radio" id="male" name="gender" value="male" required> <!-- שדה רדיו עבור זכר -->
+                <label for="male">זכר</label> <!-- תווית עבור זכר -->
+                <input type="radio" id="female" name="gender" value="female" required> <!-- שדה רדיו עבור נקבה -->
+                <label for="female">נקבה</label> <!-- תווית עבור נקבה -->
+            </div>
+
+            <button type="button" id="loginBtn">התחבר</button> <!-- כפתור להתחברות למערכת -->
+        </form>
+
+        <div id="loginOutput"></div> <!-- מקום להציג את פלט התגובה או הודעת שגיאה -->
+
+        <p>לא רשום עדיין? <a href="./registration.html">הירשם כאן</a></p> <!-- קישור לדף ההרשמה אם המשתמש לא רשום -->
+
+        <!-- הוספת כפתור לחזרה לדף הבית -->
+        <a href="./index.html" class="btn btn-primary btn-lg">חזור לדף הבית</a> <!-- כפתור חזרה לדף הבית -->
+    </div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () { // מאזין שנקרא ברגע שהדף נטען
+            // אתחול Firebase
+            const app = firebase.initializeApp(firebaseConfig); // אתחול Firebase עם הקונפיגורציה שהגדרת (היא לא כלולה כאן)
+            const auth = firebase.auth(); // יצירת אובייקט האותנטיקציה של Firebase
+
+            // פונקציה להתחברות למערכת
+            document.getElementById("loginBtn").addEventListener("click", function() { // מאזין ללחיצה על כפתור התחברות
+                let email = document.getElementById("loginEmail").value; // קבלת הערך שהוזן בשדה האימייל
+                let password = document.getElementById("loginPassword").value; // קבלת הערך שהוזן בשדה הסיסמה
+                let age = document.getElementById("loginAge").value; // קבלת הערך שהוזן בשדה הגיל
+                let gender = document.querySelector('input[name="gender"]:checked')?.value; // קבלת הערך שנבחר בשדה המגדר
+
+                // אימות הנתונים
+                if (!email || !password || !age || !gender) { // בדיקה אם כל השדות מולאו
+                    alert("אנא מלא את כל השדות"); // הצגת הודעה אם חסר שדה כלשהו
+                    return; // יציאה מהפונקציה אם יש שדה חסר
+                }
+
+                if (age < 16) { // בדיקה אם הגיל קטן מ-16
+                    alert("הגיל חייב להיות מעל 16"); // הצגת הודעה אם הגיל קטן מ-16
+                    return; // יציאה מהפונקציה
+                }
+
+                // התחברות עם אימייל וסיסמה
+                auth.signInWithEmailAndPassword(email, password) // קריאה לפונקציה של Firebase כדי להתחבר עם אימייל וסיסמה
+                    .then((userCredential) => { // אם ההתחברות מצליחה
+                        const user = userCredential.user; // קבלת המידע על המשתמש המחובר
+                        alert("התחברת בהצלחה!"); // הצגת הודעת הצלחה
+                        window.location.href = "index.html"; // העברה לדף הבית
+                    })
+                    .catch((error) => { // אם יש שגיאה בהתחברות
+                        const errorMessage = error.message; // קבלת הודעת השגיאה
+                        alert("שגיאה בהתחברות: " + errorMessage); // הצגת הודעת שגיאה למשתמש
+                    });
+            });
+
+            // פונקציה לחזרה לדף הבית
+            function goBack() { // פונקציה שמבצע את העברת הדף
+                window.location.href = "./index.html"; // ודא שהקובץ index.html נמצא במיקום הנכון
+            }
+
+            // מאזין ללחיצה על כפתור "חזור לדף הבית"
+            document.getElementById("homeBtn").addEventListener("click", goBack); // מאזין ללחיצה על כפתור החזרה לדף הבית
+        });
+    </script>
+</body>
+</html>

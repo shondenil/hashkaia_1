@@ -1,0 +1,245 @@
+/* הגדרת גופן ברירת המחדל */
+body {
+    font-family: 'Alef', sans-serif; /* הגדרת גופן ברירת המחדל לאלף עבור הטקסטים בדף */
+    background: url('/path-to-your-background-image.jpg') no-repeat center center fixed; /* הצבת תמונת רקע עם אפשרות חזרה אחרי אתחול הדף */
+    background-size: cover; /* התמונה תתמלא את כל הרקע */
+    height: 100%; /* גובה הדף יהיה 100% */
+    margin: 0; /* ביטול רווחים סביב הדף */
+    display: flex; /* שימוש ב-flexbox ליישור תוכן הדף */
+    justify-content: center; /* ממרכז את התוכן בצורה אופקית */
+    align-items: center; /* ממרכז את התוכן בצורה אנכית */
+    transition: background 0.5s ease; /* הוספת אנימציה לרקע בזמן שינוי */
+    direction: rtl; /* כיוון ימין לשמאל */
+}
+
+
+/* קונטיינר טופס */
+.form-container {
+    max-width: 500px; /* הגבלת רוחב הקונטיינר ל-500px */
+    margin: 0 auto; /* ממרכז את הקונטיינר בעמוד */
+    background-color: white; /* צבע הרקע של הקונטיינר לבן */
+    padding: 30px; /* ריפוד פנימי של 30px מכל צד */
+    border-radius: 12px; /* פינות מעוגלות ברדיוס 12px */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* צל קטן בקונטיינר */
+    text-align: center; /* טקסט במרכז הקונטיינר */
+    width: 100%; /* הקונטיינר יתפוס את כל הרוחב */
+    max-width: 400px; /* הגבלת רוחב הקונטיינר ל-400px */
+    transition: transform 0.3s ease-in-out; /* הוספת אנימציה בזמן שינוי מיקום הקונטיינר */
+}
+
+/* אפקט הזרמת טופס */
+.form-container:hover {
+    transform: scale(1.05); /* הגדלה של הקונטיינר ב-5% בזמן ריחוף */
+}
+
+/* כותרת */
+h1 {
+    color: #5D9C59; /* צבע הטקסט ירוק כהה */
+    font-size: 24px; /* גודל פונט של 24px */
+    margin-bottom: 10px; /* רווח של 10px מתחת לכותרת */
+}
+
+/* כותרת ראשית */
+h3 {
+    color: #2C3E50; /* צבע טקסט כהה */
+    font-size: 18px; /* גודל פונט של 18px */
+    margin-bottom: 20px; /* רווח של 20px מתחת לכותרת */
+}
+
+/* טקסט הסבר */
+p {
+    color: #555; /* צבע טקסט אפור כהה */
+    font-size: 14px; /* גודל פונט של 14px */
+    margin-bottom: 20px; /* רווח של 20px מתחת לטקסט */
+}
+
+/* קלטים */
+input[type="email"], input[type="password"], input[type="number"] {
+    width: 100%; /* הרוחב של הקלטים יתפוס את כל השטח */
+    padding: 12px; /* ריפוד פנימי של 12px לכל צד */
+    margin: 12px 0; /* רווחים של 12px מעל ומתחת לכל קלט */
+    border-radius: 6px; /* פינות מעוגלות של הקלטים */
+    border: 1px solid #ccc; /* מסגרת אפורה */
+    font-size: 16px; /* גודל פונט של 16px */
+    transition: border-color 0.3s ease; /* שינוי צבע המסגרת עם אנימציה */
+    text-align: right; /* היישור לימין עבור טקסט בעברית */
+}
+
+input:focus {
+    border-color: #007bff; /* שינוי צבע המסגרת לכחול בעת שהקלט נמצא במיקוד */
+    outline: none; /* ביטול של קו המיקוד הכחול המובנה */
+}
+
+/* קבוצת רדיו */
+.radio-group input[type="radio"] {
+    margin: 0 10px; /* רווח של 10px בין כל רדיו */
+}
+
+/* כפתור התחברות */
+button {
+    background-image: linear-gradient(to right, #007bff, #0056b3); /* גוון כחול מגרדיאנט */
+    border: none; /* ביטול מסגרת */
+    padding: 12px; /* ריפוד פנימי של 12px */
+    color: white; /* צבע טקסט לבן */
+    font-size: 18px; /* גודל פונט של 18px */
+    cursor: pointer; /* שורת סמן הופכת ליד */
+    border-radius: 6px; /* פינות מעוגלות לכפתור */
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* אנימציות על שינוי צבע, מיקום וצל */
+}
+
+button:hover {
+    background-image: linear-gradient(to right, #0056b3, #003d80); /* שינוי הגרדיאנט כשהעכבר ריחף */
+    transform: translateY(-3px); /* הזזת הכפתור למעלה בעת ריחוף */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* הוספת צל גדול כשהכפתור ריחף */
+}
+
+button:active {
+    transform: translateY(1px); /* הזזת הכפתור כלפי מטה בעת לחיצה */
+}
+
+/* כפתור חזרה לדף הבית */
+#homeBtn {
+    background-color: #e74c3c; /* צבע אדום לכפתור */
+    color: white; /* צבע טקסט לבן */
+    border: none; /* ביטול מסגרת */
+    padding: 10px 20px; /* ריפוד פנימי של 10px לגובה ו-20px לרוחב */
+    font-size: 16px; /* גודל פונט של 16px */
+    border-radius: 4px; /* פינות מעוגלות */
+    cursor: pointer; /* סמן העכבר יהפוך ליד */
+    width: 100%; /* הכפתור יתפוס 100% מהשדה */
+    margin-top: 20px; /* רווח של 20px מעל הכפתור */
+}
+
+#homeBtn:hover {
+    background-color: #c0392b; /* שינוי צבע לאדום כהה יותר בעת ריחוף */
+}
+
+/* קישור הרשמה */
+a {
+    color: #5D9C59; /* צבע הקישור ירוק כהה */
+    text-decoration: none; /* ביטול קו תחתון */
+}
+
+a:hover {
+    text-decoration: underline; /* הוספת קו תחתון בעת ריחוף */
+}
+
+/* עיצוב עבור הודעות שגיאה */
+#loginOutput {
+    color: #e74c3c; /* צבע אדום עבור הודעות שגיאה */
+    margin-top: 20px; /* רווח של 20px מעל הודעת השגיאה */
+}
+
+/* אנימציה של טעינה */
+#loading {
+    animation: spin 1s infinite linear; /* אנימציה מסתובבת כל 1 שנייה בלולאה אינסופית */
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); } /* תחילת האנימציה עם סיבוב של 0 מעלות */
+    to { transform: rotate(360deg); } /* סוף האנימציה עם סיבוב של 360 מעלות */
+}
+
+/* אנימציה על רקע שינוי */
+body:hover {
+    background: linear-gradient(135deg, #f8f9fa 30%, #0056b3 70%); /* שינוי צבע הרקע בעת ריחוף על הדף */
+}
+
+/* עיצוב עבור טופס התחברות ספציפי */
+#loginForm {
+    display: flex; /* שימוש ב-flexbox */
+    flex-direction: column; /* סידור שדות הטופס באופן אנכי */
+    align-items: flex-start; /* יישור האלמנטים בצד שמאל */
+    text-align: right; /* טקסט יימשך לימין */
+}
+
+#loginForm label {
+    font-weight: bold; /* כותרות שדות ב-bold */
+    margin-bottom: 6px; /* רווח קטן מתחת לכל כותרת שדה */
+    margin-top: 12px; /* רווח של 12px מעל כותרת השדה */
+    text-align: right; /* יישור לימין */
+}
+
+#loginForm input[type="email"],
+#loginForm input[type="password"],
+#loginForm input[type="number"] {
+    width: 100%; /* הקלטים יתפוס את כל הרוחב */
+    padding: 12px; /* ריפוד פנימי של 12px */
+    margin-bottom: 12px; /* רווח של 12px מתחת לכל קלט */
+    border-radius: 6px; /* פינות מעוגלות */
+    border: 1px solid #ccc; /* מסגרת אפורה */
+}
+
+#loginForm .radio-group {
+    display: flex; /* הצגת קבוצת הרדיו עם flexbox */
+    justify-content: space-around; /* יישור אלמנטים בצורה שווה */
+    margin-bottom: 20px; /* רווח של 20px מתחת לקבוצת הרדיו */
+}
+
+#loginForm button {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    background-color: #4CAF50; /* צבע ירוק לכפתור */
+    border-radius: 6px; /* פינות מעוגלות */
+    cursor: pointer; /* הופך את סמן העכבר ליד */
+}
+
+#loginForm button:hover {
+    background-color: #45a049; /* שינוי צבע ירוק כהה יותר בעת ריחוף */
+}
+
+/* הסתרת אנימציה טעינה */
+#loading {
+    display: none; /* הסתרת אלמנט האנימציה */
+}
+
+/* הגדרת כפתור עם חץ */
+button {
+    font-size: 20px; /* גודל פונט של 20px */
+    padding: 10px; /* ריפוד פנימי של 10px */
+    display: flex; /* הצגת הכפתור כ-flexbox */
+    align-items: center; /* יישור אלמנטים בתוך הכפתור בצורה אנכית */
+    justify-content: center; /* יישור אלמנטים בתוך הכפתור בצורה אופקית */
+}
+
+.arrow {
+    margin-left: 10px; /* רווח של 10px משמאל לאייקון החץ */
+    font-size: 24px; /* גודל פונט של 24px עבור החץ */
+}
+
+button:hover {
+    cursor: pointer; /* הופך את סמן העכבר ליד כאשר מרחפים מעל הכפתור */
+}
+
+/* הגדרת גוף הדף */
+body {
+    font-family: 'Alef', sans-serif; /* הגדרת גופן אלף */
+    background: url('/path-to-your-background-image.jpg') no-repeat center center fixed; /* תמונת רקע עם אפשרות חזרה */
+    background-size: cover; /* התמונה תכסה את כל הרקע */
+    height: 100%; /* גובה הדף יהיה 100% */
+    margin: 0; /* ביטול רווחים מסביב לדף */
+    display: flex; /* שימוש ב-flexbox */
+    justify-content: center; /* ממרכז את התוכן אופקית */
+    align-items: center; /* ממרכז את התוכן אנכית */
+    transition: background 0.5s ease; /* הוספת אנימציה לשינוי הרקע */
+    direction: rtl; /* כיוון ימין לשמאל */
+}
+
+/* הגדרה מיוחדת עבור ה-<select> */
+#toggleLampBtn {
+    padding: 10px; /* ריפוד פנימי של 10px */
+    font-size: 18px; /* גודל פונט של 18px */
+    border-radius: 6px; /* פינות מעוגלות */
+    border: 1px solid #ccc; /* מסגרת אפורה */
+}
+
+/* למרכז את ה-<select> במרכז הדף */
+.center {
+    display: flex; /* הצגת האלמנט כ-flexbox */
+    justify-content: center; /* ממרכז את התוכן אופקית */
+    align-items: center; /* ממרכז את התוכן אנכית */
+    height: 100vh; /* גובה הדף יהיה 100% */
+    width: 100%; /* הרוחב יהיה 100% */
+    text-align: center; /* יישור הטקסט למרכז */
+}

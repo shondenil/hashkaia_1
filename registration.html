@@ -1,0 +1,119 @@
+<!DOCTYPE html> <!-- מציין שהמסמך הוא HTML5 -->
+<html lang="he" dir="rtl"> <!-- מגדיר את השפה לעברית וכיוון הטקסט מימין לשמאל -->
+<head>
+    <meta charset="UTF-8"> <!-- קובע את קידוד התויות של הדף ל-UTF-8 -->
+    <title>הרשמה למערכת</title> <!-- כותרת הדף שתופיע בכרטיסיית הדפדפן -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- חיבור לקובץ CSS של Bootstrap לצורך עיצוב מרכיבי הדף -->
+    
+    <style>
+        body.registration-body { 
+            background-color: #f4f4f4;  /* צבע רקע אפור בהיר */
+            display: flex;               /* סידור גמיש בעזרת Flexbox */
+            justify-content: center;     /* מיקום במרכז במאוזן */
+            align-items: center;         /* מיקום במרכז במאונך */
+            height: 100vh;               /* גובה מלא של המסך */
+            margin: 0;                   /* מבטל שוליים */
+        }
+
+        .registration-container { 
+            background-color: white;    /* צבע רקע לבן */
+            padding: 30px;               /* רווח פנימי של 30 פיקסלים */
+            border-radius: 10px;         /* פינות מעוגלות */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* צל עדין */
+            width: 100%;                 /* רוחב 100% */
+            max-width: 400px;            /* רוחב מקסימלי 400 פיקסלים */
+        }
+    </style>
+</head>
+<body class="registration-body"> <!-- מחיל את הסגנון של הגוף על אלמנט ה-body -->
+    <div class="registration-container"> <!-- קונטיינר שמכיל את טופס ההרשמה -->
+        <h2 class="text-center mb-4">הרשמה למערכת</h2> <!-- כותרת במרכז עם רווח בתחתית -->
+        <form id="registrationForm"> <!-- טופס ההרשמה עם מזהה registrationForm -->
+            <div class="mb-3"> <!-- מבנה של שדה טופס עם רווח בתחתית -->
+                <label for="email" class="form-label">כתובת אימייל</label> <!-- תווית עבור שדה האימייל -->
+                <input type="email" class="form-control" id="email" required> <!-- שדה קלט מסוג אימייל עם חובה למלא אותו -->
+            </div>
+            <div class="mb-3"> <!-- מבנה של שדה טופס עם רווח בתחתית -->
+                <label for="password" class="form-label">סיסמה</label> <!-- תווית עבור שדה הסיסמה -->
+                <input type="password" class="form-control" id="password" required minlength="6"> <!-- שדה קלט מסוג סיסמה עם מינימום 6 תווים -->
+            </div>
+            <div class="mb-3"> <!-- מבנה של שדה טופס עם רווח בתחתית -->
+                <label for="age" class="form-label">גיל</label> <!-- תווית עבור שדה הגיל -->
+                <input type="number" class="form-control" id="age" required min="16" max="100"> <!-- שדה קלט מסוג מספר עם הגבלות גיל -->
+            </div>
+            <div class="mb-3"> <!-- מבנה של שדה טופס עם רווח בתחתית -->
+                <label class="form-label">מגדר</label> <!-- תווית עבור שדה המגדר -->
+                <div> <!-- תחום לתשובות של המגדר -->
+                    <input type="radio" name="gender" value="male" id="male" class="form-check-input" required> <!-- כפתור רדיו לזכר -->
+                    <label for="male" class="form-check-label me-2">זכר</label> <!-- תווית עבור כפתור הרדיו לזכר -->
+                    
+                    <input type="radio" name="gender" value="female" id="female" class="form-check-input" required> <!-- כפתור רדיו לנקבה -->
+                    <label for="female" class="form-check-label me-2">נקבה</label> <!-- תווית עבור כפתור הרדיו לנקבה -->
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" id="submitBtn">הירשם</button> <!-- כפתור שליחה -->
+        </form>
+        <div class="text-center mt-3"> <!-- תיבה במרכז עם רווח בתחתית -->
+            <p>כבר יש לך חשבון? <a href="./login.html">התחבר כאן</a></p> <!-- קישור להתחברות -->
+        </div>
+    </div>
+
+    <script type="module">
+        // מייבא את הפונקציות הנדרשות עבור Firebase
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js';
+        import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js';
+        import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js';
+    
+        // הגדרת פרטי הקונפיגורציה של Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbkZsdox_IoL_e5PT45LTt0cy89TeUtiY",
+            authDomain: "irrigation-system-a3913.firebaseapp.com",
+            databaseURL: "https://irrigation-system-a3913-default-rtdb.firebaseio.com",
+            projectId: "irrigation-system-a3913",
+            storageBucket: "irrigation-system-a3913.firebasestorage.app",
+            messagingSenderId: "92270780500",
+            appId: "1:92270780500:web:4d5d771b1e258d65e04dc1",
+            measurementId: "G-6KTY2W5DK3"
+        };
+    
+        // אתחול Firebase עם הקונפיגורציה שסופקה
+        const app = initializeApp(firebaseConfig);
+    
+        // יצירת אובייקט auth שמייצג את מנגנון האותנטיקציה
+        const auth = getAuth(app);
+    
+        // יצירת אובייקט database שמייצג את בסיס הנתונים של Firebase
+        const database = getDatabase(app);
+    
+        // שמירה של ההגדרה על אירוע של שליחת טופס ההרשמה
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();  // מונע את שליחת הטופס בפועל
+    
+            // איסוף הערכים שהוזנו בטופס
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const age = document.getElementById('age').value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+    
+            // קריאה לפונקציה של Firebase כדי ליצור משתמש עם האימייל והסיסמה
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {  // אם ההרשמה הצליחה
+                    const user = userCredential.user;  // קבלת פרטי המשתמש החדש
+                    
+                    // שמירת פרטי המשתמש הנוספים (גיל ומגדר) בבסיס הנתונים של Firebase
+                    set(ref(database, 'users/' + user.uid), {
+                        email: email,
+                        age: age,
+                        gender: gender
+                    });
+    
+                    // הצגת הודעת הצלחה והעבר לדף הבית
+                    alert('הרשמה בוצעה בהצלחה!');
+                    window.location.href = './index.html';
+                })
+                .catch((error) => {  // אם יש שגיאה בהרשמה
+                    alert('שגיאה בהרשמה: ' + error.message);  // הצגת הודעת שגיאה
+                });
+        });
+    </script>
+    

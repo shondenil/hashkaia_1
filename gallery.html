@@ -1,0 +1,60 @@
+<!DOCTYPE html> <!-- מציין שהמסמך הוא בקוד HTML5, שהוא תקן העדכני ביותר של HTML -->
+<html lang="he"> <!-- תג הפתיחה של הדף, עם מאפיין lang="he" שמצביע על כך שהשפה הראשית של הדף היא עברית -->
+<head>
+    <meta charset="UTF-8"> <!-- מגדיר את הקידוד של הדף כ-UTF-8, שמאפשר שימוש בתווים עבריים ולטיניים -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- מוודא שהדף יוצג כראוי במכשירים ניידים, ומגדיר את רוחב התצוגה בהתאם לרוחב המסך של המכשיר -->
+    <title>גלריה</title> <!-- קובע את הכותרת שתופיע בכרטיס הלשונית של הדפדפן, במקרה זה "גלריה" -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"> <!-- קישור לקובץ CSS חיצוני של Bootstrap, המוסיף עיצוב מוכן מראש לדף -->
+    <link rel="stylesheet" href="./css/style.css"> <!-- קישור לקובץ CSS מותאם אישית (style.css) הממוקם בתיקיית css עבור עיצוב הדף -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <header> <!-- תג המייצג את כותרת הדף, בדרך כלל מכיל את המהות או תפריטים של הדף -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> <!-- יצירת תפריט ניווט מסוג navbar באמצעות Bootstrap, כולל עיצוב כהה ורקע כחול -->
+            <div class="container-fluid"> <!-- מגדיר מיכל עם מרווחים גמישים לכל רוחב המסך -->
+                <a class="navbar-brand" href="./index.html">מערכת השקייה IoT</a> <!-- יצירת קישור עם שם המותג ("מערכת השקייה IoT"), המוביל לדף הבית -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> <!-- כפתור המאפשר לתפריט הניווט להתרסק או להתרחב במובייל -->
+                    <span class="navbar-toggler-icon"></span> <!-- אייקון המופיע בכפתור עבור הצגת התפריט במובייל -->
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav"> <!-- חבילת תוכן התפריט שנמצאת במצב מקוצר במובייל ומתרחבת על ידי לחיצה על הכפתור -->
+                    <ul class="navbar-nav"> <!-- יצירת רשימה לא מסודרת עבור הפריטים בתפריט הניווט -->
+                        <li class="nav-item"><a class="nav-link" href="./index.html">דף הבית</a></li> <!-- פריט בתפריט, קישור שמוביל לדף הבית -->
+                        <li class="nav-item"><a class="nav-link active" href="./gallery.html">גלריה</a></li> <!-- פריט בתפריט, קישור שמוביל לדף הגלריה -->
+                        <li class="nav-item"><a class="nav-link" href="./img.jpg2003/">אודות</a></li> <!-- פריט בתפריט, קישור שמוביל לדף האודות -->
+                        <li class="nav-item"><a class="nav-link" href="./login.html">Login</a></li> <!-- פריט בתפריט, קישור שמוביל לדף ההתחברות -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5"> <!-- מתחם עיקרי שמכיל את התוכן המרכזי של הדף עם עיצוב מרווח -->
+        <h1 class="text-center">גלריית התמונות שלנו</h1> <!-- כותרת מרכזית של הדף עם עיצוב טקסט במרכז -->
+        <div class="row mt-4"> <!-- מתחם לשורות של התמונות, עם מרווח למעלה -->
+            <div class="col-md-4" style="height: 300px;"> 
+                <!-- תמונה בתא הראשון של הגלריה -->
+                <img src="./img.jpg2003/166573-xjwjz7.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;" 
+                     alt="תמונה 1">
+            </div>
+            <div class="col-md-4" style="height: 300px;"> 
+                <!-- תמונה בתא השני של הגלריה -->
+                <img src="./img.jpg2003/plastic-sprinkler-irrigating-flower-bed-grass-lawn-with-water-summer-garden-watering-green-vegetation-duging-dry-season-maintaining-it-fresh-1.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;" 
+                     alt="תמונה 2">
+            </div>
+            <div class="col-md-4" style="height: 300px;"> 
+                <!-- תמונה בתא השלישי של הגלריה -->
+                <img src="./img.jpg2003/מערכת-השקיה-1-e1681149731698.jpg" 
+                     style="width: 100%; height: 100%; object-fit: cover;" 
+                     alt="תמונה 3">
+            </div>
+        </div>        
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3"> <!-- כותרת תחתונה (footer) עם עיצוב רקע כהה, טקסט לבן ומרכזי ו-padding לכל גובה התוכן -->
+        <p>&copy; 2025 מערכת השקייה IoT | כל הזכויות שמורות</p> <!-- טקסט ב-footer שמציין את הזכויות יוצרים של האתר -->
+    </footer>
+</body>
+</html>

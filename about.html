@@ -1,0 +1,87 @@
+<!DOCTYPE html> <!-- הצהרת סוג המסמך שמציינת שזהו מסמך HTML5 -->
+<html lang="he"> <!-- תגית הפתיחה של מסמך ה-HTML, עם הגדרת השפה כעברית -->
+<head> <!-- תחילת חלק ה-head של המסמך, המכיל מידע על המסמך ולא מוצג ישירות בדפדפן -->
+    <meta charset="UTF-8"> <!-- הגדרת קידוד התווים של הדף ל-UTF-8, שתומך בעברית ובתווים מיוחדים -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- מטא-תג להתאמת תצוגת הדף למכשירים ניידים, עם הגדרת רוחב התצוגה ורמת הזום ההתחלתית -->
+    <title>אודות - מערכת השקייה IoT</title> <!-- כותרת הדף שתוצג בלשונית הדפדפן -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"> <!-- קישור לקובץ CSS של ספריית Bootstrap (גרסה 5.3.0-alpha3) מתוך CDN -->
+    <link rel="stylesheet" href="./css/style.css"> <!-- קישור לקובץ CSS מקומי המכיל סגנונות מותאמים אישית לאתר -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"> <!-- קישור נוסף לקובץ CSS של Bootstrap (גרסה 5.3.0) - כפילות, אפשר להסיר אחד מהם -->
+
+    <style> 
+        /* הגדרת מחלקת CSS שמיישרת טקסט לימין (חשוב בעברית) */
+        .text-right {
+            text-align: right;
+        }
+    </style> <!-- סיום בלוק הסגנון המוטמע -->
+</head> <!-- סיום חלק ה-head של המסמך -->
+<body> <!-- תחילת גוף המסמך שיוצג בדפדפן -->
+    <header> <!-- תגית סמנטית המגדירה את אזור הכותרת העליונה של הדף -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> <!-- תגית ניווט עם מחלקות Bootstrap ליצירת סרגל ניווט כחול כהה, מתרחב בגדלים גדולים -->
+            <div class="container-fluid"> <!-- מיכל Bootstrap מסוג fluid (רוחב מלא) עבור תוכן הניווט -->
+                <a class="navbar-brand" href="./index.html">מערכת השקייה IoT</a> <!-- הלוגו/שם האתר עם קישור לדף הבית -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> <!-- כפתור המבורגר שמופיע במסכים קטנים לפתיחת תפריט הניווט -->
+                    <span class="navbar-toggler-icon"></span> <!-- האייקון של כפתור ההמבורגר -->
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav"> <!-- אזור הניווט שמתקפל במסכים קטנים -->
+                    <ul class="navbar-nav"> <!-- רשימה לא ממוספרת של פריטי הניווט -->
+                        <li class="nav-item"><a class="nav-link" href="./index.html">דף הבית</a></li> <!-- פריט ניווט לדף הבית -->
+                        <li class="nav-item"><a class="nav-link active" href="./about.html">אודות</a></li> <!-- פריט ניווט לדף אודות (הדף הנוכחי, מסומן כפעיל) -->
+                        <li class="nav-item"><a class="nav-link" href="./gallery.html">גלריה</a></li> <!-- פריט ניווט לדף הגלריה -->
+                        <li class="nav-item"><a class="nav-link" href="./login.html">התחברות</a></li> <!-- פריט ניווט לדף יצירת קשר -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5"> <!-- האזור הראשי של הדף, עם מיכל Bootstrap ושוליים עליונים ותחתונים -->
+        <section class="text-center"> <!-- סקציה ממורכזת לכותרת ותיאור הפרויקט -->
+            <h1 class="display-4 fw-bold">על הפרויקט</h1> <!-- כותרת ראשית גדולה ומודגשת -->
+            <p class="lead">מערכת השקייה חכמה המבוססת על IoT לניהול חסכוני ואוטומטי של מים לחקלאות.</p> <!-- פסקת תיאור בגופן גדול -->
+            <img src="./img.jpg2003/DALL·E 2025-01-29 19.04.42 - A futuristic AI-powered smart irrigation system featuring a DC12V water pump, a cooling fan, a soil moisture sensor, and a water level sensor. The sys.webp" class="img-fluid rounded shadow-lg" alt="תמונה של מערכת השקייה חכמה"> <!-- תמונה של המערכת עם עיצוב רספונסיבי, פינות מעוגלות וצל -->
+        </section>
+
+        <section class="row mt-5"> <!-- סקציה בפריסת שורה עם שוליים עליונים -->
+            <div class="col-md-6 text-right"> <!-- עמודה שתופסת חצי מהרוחב במסכים בינוניים ומעלה, עם טקסט מיושר לימין -->
+                <h2 class="fw-bold">המטרה שלנו</h2> <!-- כותרת משנית מודגשת -->
+                <p>המטרה המרכזית של הפרויקט היא לייעל את השימוש במים לחקלאות וליצור מערכת אוטומטית המסוגלת למדוד את מצב הקרקע ולהשקות בהתאם.</p> <!-- פסקת מידע -->
+            </div>
+            <div class="col-md-6 text-right"> <!-- עמודה שנייה שתופסת חצי מהרוחב במסכים בינוניים ומעלה, עם טקסט מיושר לימין -->
+                <h2 class="fw-bold">איך זה עובד?</h2> <!-- כותרת משנית מודגשת -->
+                <p>המערכת עושה שימוש בחיישני לחות קרקע, בקרי IoT וענן לאיסוף וניתוח נתונים. המשתמש יכול לשלוט בהשקייה מרחוק באמצעות אפליקציה ייעודית.</p> <!-- פסקת מידע -->
+            </div>
+        </section>
+
+        <section class="text-center my-5"> <!-- סקציה ממורכזת עם שוליים עליונים ותחתונים -->
+            <h2 class="fw-bold">יתרונות המערכת</h2> <!-- כותרת משנית מודגשת -->
+            <div class="row justify-content-center"> <!-- שורה עם יישור תוכן למרכז -->
+                <div class="col-md-3 p-3 bg-light shadow-sm rounded mx-2"> <!-- עמודה עם רקע בהיר, צל קל, פינות מעוגלות ושוליים -->
+                    <h3 class="text-primary" data-bs-toggle="collapse" href="#waterSaving" role="button" aria-expanded="false" aria-controls="waterSaving">חיסכון במים</h3> <!-- כותרת שלישונית בצבע כחול שפועלת ככפתור לפתיחת תוכן מתקפל -->
+                    <div class="collapse" id="waterSaving"> <!-- אזור מתקפל (מוסתר כברירת מחדל) -->
+                        <p>המערכת מבצעת השקייה חכמה שמתבצעת בהתאם לצורכי הצמחייה בלבד, כך שנחסך מים על ידי השקיית הצמחיה רק כשהיא באמת זקוקה להם, מבלי לבזבז מים מיותרים. תהליך זה מבטיח שמירה על הסביבה תוך שמירה על היבול בריא ויציב.</p> <!-- פסקת הסבר מפורטת -->
+                    </div>
+                </div>
+                <div class="col-md-3 p-3 bg-light shadow-sm rounded mx-2"> <!-- עמודה שנייה בפריסה דומה -->
+                    <h3 class="text-primary" data-bs-toggle="collapse" href="#remoteControl" role="button" aria-expanded="false" aria-controls="remoteControl">שליטה מרחוק</h3> <!-- כותרת שלישונית/כפתור לתוכן מתקפל -->
+                    <div class="collapse" id="remoteControl"> <!-- אזור מתקפל שני -->
+                        <p>המשתמש יכול לגשת לכל הנתונים של המערכת מכל מקום באמצעות אפליקציה ייעודית. שליטה מרחוק מאפשרת למגדלים לבצע שינויים מיידיים בהגדרות המערכת ולהגיב באופן מיידי לשינויים בסביבה או בתנאים.</p> <!-- פסקת הסבר -->
+                    </div>
+                </div>
+                <div class="col-md-3 p-3 bg-light shadow-sm rounded mx-2"> <!-- עמודה שלישית בפריסה דומה -->
+                    <h3 class="text-primary" data-bs-toggle="collapse" href="#improveYield" role="button" aria-expanded="false" aria-controls="improveYield">שיפור היבול</h3> <!-- כותרת שלישונית/כפתור לתוכן מתקפל -->
+                    <div class="collapse" id="improveYield"> <!-- אזור מתקפל שלישי -->
+                        <p>השקייה מותאמת אישית לתנאי הקרקע והאקלים, כך שהמערכת יודעת לזהות את הצרכים הספציפיים של הצמחייה בהתאם למזג האוויר ולסוג הקרקע. באמצעות התאמה מדויקת של ההשקייה, ניתן לשפר את היבול ולהשיג תוצאות טובות יותר, תוך כדי חסכון במים.</p> <!-- פסקת הסבר מפורטת -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3"> <!-- אזור תחתית הדף עם רקע כהה, טקסט לבן וריפוד עליון ותחתון -->
+        <p>&copy; 2025 מערכת השקייה IoT | כל הזכויות שמורות</p> <!-- הודעת זכויות יוצרים עם סימן קופירייט -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script> <!-- קישור לספריית JavaScript של Bootstrap לתפקוד האלמנטים האינטראקטיביים -->
+</body>
+</html>
